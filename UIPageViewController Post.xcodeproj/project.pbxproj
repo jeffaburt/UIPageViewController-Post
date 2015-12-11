@@ -8,14 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		0028BB961C1B0B980040AE31 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0028BB951C1B0B980040AE31 /* AppDelegate.swift */; };
-		0028BB981C1B0B980040AE31 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0028BB971C1B0B980040AE31 /* RootViewController.swift */; };
-		0028BB9A1C1B0B980040AE31 /* DataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0028BB991C1B0B980040AE31 /* DataViewController.swift */; };
-		0028BB9C1C1B0B980040AE31 /* ModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0028BB9B1C1B0B980040AE31 /* ModelController.swift */; };
 		0028BB9F1C1B0B980040AE31 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0028BB9D1C1B0B980040AE31 /* Main.storyboard */; };
 		0028BBA11C1B0B980040AE31 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0028BBA01C1B0B980040AE31 /* Assets.xcassets */; };
 		0028BBA41C1B0B980040AE31 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0028BBA21C1B0B980040AE31 /* LaunchScreen.storyboard */; };
 		0028BBAF1C1B0B980040AE31 /* UIPageViewController_PostTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0028BBAE1C1B0B980040AE31 /* UIPageViewController_PostTests.swift */; };
 		0028BBBA1C1B0B980040AE31 /* UIPageViewController_PostUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0028BBB91C1B0B980040AE31 /* UIPageViewController_PostUITests.swift */; };
+		0028BBC81C1B11A70040AE31 /* TutorialPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0028BBC71C1B11A70040AE31 /* TutorialPageViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,9 +36,6 @@
 /* Begin PBXFileReference section */
 		0028BB921C1B0B980040AE31 /* UIPageViewController Post.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "UIPageViewController Post.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0028BB951C1B0B980040AE31 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		0028BB971C1B0B980040AE31 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
-		0028BB991C1B0B980040AE31 /* DataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataViewController.swift; sourceTree = "<group>"; };
-		0028BB9B1C1B0B980040AE31 /* ModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelController.swift; sourceTree = "<group>"; };
 		0028BB9E1C1B0B980040AE31 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0028BBA01C1B0B980040AE31 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0028BBA31C1B0B980040AE31 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -51,6 +46,7 @@
 		0028BBB51C1B0B980040AE31 /* UIPageViewController PostUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "UIPageViewController PostUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0028BBB91C1B0B980040AE31 /* UIPageViewController_PostUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIPageViewController_PostUITests.swift; sourceTree = "<group>"; };
 		0028BBBB1C1B0B980040AE31 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0028BBC71C1B11A70040AE31 /* TutorialPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialPageViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,13 +98,11 @@
 			isa = PBXGroup;
 			children = (
 				0028BB951C1B0B980040AE31 /* AppDelegate.swift */,
-				0028BB971C1B0B980040AE31 /* RootViewController.swift */,
-				0028BB991C1B0B980040AE31 /* DataViewController.swift */,
-				0028BB9B1C1B0B980040AE31 /* ModelController.swift */,
 				0028BB9D1C1B0B980040AE31 /* Main.storyboard */,
 				0028BBA01C1B0B980040AE31 /* Assets.xcassets */,
 				0028BBA21C1B0B980040AE31 /* LaunchScreen.storyboard */,
 				0028BBA51C1B0B980040AE31 /* Info.plist */,
+				0028BBC71C1B11A70040AE31 /* TutorialPageViewController.swift */,
 			);
 			path = "UIPageViewController Post";
 			sourceTree = "<group>";
@@ -265,9 +259,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0028BB981C1B0B980040AE31 /* RootViewController.swift in Sources */,
-				0028BB9C1C1B0B980040AE31 /* ModelController.swift in Sources */,
-				0028BB9A1C1B0B980040AE31 /* DataViewController.swift in Sources */,
+				0028BBC81C1B11A70040AE31 /* TutorialPageViewController.swift in Sources */,
 				0028BB961C1B0B980040AE31 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -410,7 +402,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "UIPageViewController Post/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.seveneven.UIPageViewController-Post";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.atomicobject.UIPageViewController-Post";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -421,7 +413,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "UIPageViewController Post/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.seveneven.UIPageViewController-Post";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.atomicobject.UIPageViewController-Post";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -432,7 +424,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = "UIPageViewController PostTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.seveneven.UIPageViewController-PostTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.atomicobject.UIPageViewController-PostTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/UIPageViewController Post.app/UIPageViewController Post";
 			};
@@ -444,7 +436,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = "UIPageViewController PostTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.seveneven.UIPageViewController-PostTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.atomicobject.UIPageViewController-PostTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/UIPageViewController Post.app/UIPageViewController Post";
 			};
@@ -455,7 +447,7 @@
 			buildSettings = {
 				INFOPLIST_FILE = "UIPageViewController PostUITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.seveneven.UIPageViewController-PostUITests";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.atomicobject.UIPageViewController-PostUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_TARGET_NAME = "UIPageViewController Post";
 				USES_XCTRUNNER = YES;
@@ -467,7 +459,7 @@
 			buildSettings = {
 				INFOPLIST_FILE = "UIPageViewController PostUITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.seveneven.UIPageViewController-PostUITests";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.atomicobject.UIPageViewController-PostUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_TARGET_NAME = "UIPageViewController Post";
 				USES_XCTRUNNER = YES;
@@ -493,6 +485,7 @@
 				0028BBC01C1B0B980040AE31 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0028BBC11C1B0B980040AE31 /* Build configuration list for PBXNativeTarget "UIPageViewController PostTests" */ = {
 			isa = XCConfigurationList;
@@ -501,6 +494,7 @@
 				0028BBC31C1B0B980040AE31 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0028BBC41C1B0B980040AE31 /* Build configuration list for PBXNativeTarget "UIPageViewController PostUITests" */ = {
 			isa = XCConfigurationList;
@@ -509,6 +503,7 @@
 				0028BBC61C1B0B980040AE31 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

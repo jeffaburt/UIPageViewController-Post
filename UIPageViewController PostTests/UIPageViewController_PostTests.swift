@@ -3,7 +3,7 @@
 //  UIPageViewController PostTests
 //
 //  Created by Jeffrey Burt on 12/11/15.
-//  Copyright © 2015 Seven Even. All rights reserved.
+//  Copyright © 2015 Atomic Object. All rights reserved.
 //
 
 import XCTest
