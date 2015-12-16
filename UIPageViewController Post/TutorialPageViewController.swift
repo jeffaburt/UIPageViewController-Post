@@ -85,14 +85,12 @@ extension TutorialPageViewController: UIPageViewControllerDataSource {
     }
     
     func presentationIndexForPageViewController(pageViewController: UIPageViewController) -> Int {
-        var index = 0
-        
-        if let firstViewController = viewControllers?.first,
-               firstViewControllerIndex = orderedViewControllers.indexOf(firstViewController) {
-            index = firstViewControllerIndex
+        guard let firstViewController = viewControllers?.first,
+            firstViewControllerIndex = orderedViewControllers.indexOf(firstViewController) else {
+                return 0
         }
         
-        return index
+        return firstViewControllerIndex
     }
     
 }
