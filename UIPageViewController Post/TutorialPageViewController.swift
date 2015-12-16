@@ -11,7 +11,7 @@ import UIKit
 class TutorialPageViewController: UIPageViewController {
     
     private(set) lazy var orderedViewControllers: [UIViewController] = {
-        // The view controllers will be showin in this order
+        // The view controllers will be shown in this order
         return [self.newViewControllerUsing(color: "Green"),
             self.newViewControllerUsing(color: "Red"),
             self.newViewControllerUsing(color: "Blue")]
