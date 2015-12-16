@@ -49,16 +49,17 @@ extension TutorialPageViewController: UIPageViewControllerDataSource {
             
             let previousIndex = viewControllerIndex - 1
             
-            if orderedViewControllers.count > previousIndex &&
-                previousIndex >= 0 {
-                    return orderedViewControllers[previousIndex]
-            }
-            // User is on the first view controller and swiped left -> loop to the end
-            else if previousIndex < 0 {
+            // User is on the first view controller and swiped left to loop to
+            // the last view controller.
+            guard previousIndex >= 0 else {
                 return orderedViewControllers.last
             }
             
-            return nil
+            guard orderedViewControllers.count > previousIndex else {
+                return nil
+            }
+            
+            return orderedViewControllers[previousIndex]
     }
 
     func pageViewController(pageViewController: UIPageViewController,
@@ -68,16 +69,19 @@ extension TutorialPageViewController: UIPageViewControllerDataSource {
             }
             
             let nextIndex = viewControllerIndex + 1
+            let orderedViewControllersCount = orderedViewControllers.count
             
-            if orderedViewControllers.count > nextIndex {
-                return orderedViewControllers[nextIndex]
-            }
-            // User is on the last view controller and swiped right -> loop to the beginning
-            else if orderedViewControllers.count == nextIndex {
+            // User is on the last view controller and swiped right to loop to
+            // the first view controller.
+            guard orderedViewControllersCount != nextIndex else {
                 return orderedViewControllers.first
             }
             
-            return nil
+            guard orderedViewControllersCount > nextIndex else {
+                return nil
+            }
+            
+            return orderedViewControllers[nextIndex]
     }
     
     func presentationCountForPageViewController(pageViewController: UIPageViewController) -> Int {
