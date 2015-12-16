@@ -12,9 +12,9 @@ class TutorialPageViewController: UIPageViewController {
     
     private(set) lazy var orderedViewControllers: [UIViewController] = {
         // The view controllers will be shown in this order
-        return [self.newViewControllerUsing(color: "Green"),
-            self.newViewControllerUsing(color: "Red"),
-            self.newViewControllerUsing(color: "Blue")]
+        return [self.newColoredViewController("Green"),
+            self.newColoredViewController("Red"),
+            self.newColoredViewController("Blue")]
     }()
     
     override func viewDidLoad() {
@@ -30,7 +30,7 @@ class TutorialPageViewController: UIPageViewController {
         }
     }
     
-    private func newViewControllerUsing(color color: String) -> UIViewController {
+    private func newColoredViewController(color: String) -> UIViewController {
         return UIStoryboard(name: "Main", bundle: nil) .
             instantiateViewControllerWithIdentifier("\(color)ViewController")
     }
