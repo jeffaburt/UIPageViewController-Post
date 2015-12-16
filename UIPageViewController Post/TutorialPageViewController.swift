@@ -24,9 +24,9 @@ class TutorialPageViewController: UIPageViewController {
         
         if let firstViewController = orderedViewControllers.first {
             setViewControllers([firstViewController],
-                               direction: .Forward,
-                               animated: true,
-                               completion: nil)
+                direction: .Forward,
+                animated: true,
+                completion: nil)
         }
     }
     
@@ -41,44 +41,46 @@ class TutorialPageViewController: UIPageViewController {
 
 extension TutorialPageViewController: UIPageViewControllerDataSource {
     
-    func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
-        var previousViewController: UIViewController?
-        
-        guard let viewControllerIndex = orderedViewControllers.indexOf(viewController) else {
-            return nil
-        }
-        
-        let previousIndex = viewControllerIndex - 1
-        
-        if orderedViewControllers.count > previousIndex && previousIndex >= 0 {
-            previousViewController = orderedViewControllers[previousIndex]
-        }
+    func pageViewController(pageViewController: UIPageViewController,
+        viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
+            var previousViewController: UIViewController?
+            
+            guard let viewControllerIndex = orderedViewControllers.indexOf(viewController) else {
+                return nil
+            }
+            
+            let previousIndex = viewControllerIndex - 1
+            
+            if orderedViewControllers.count > previousIndex && previousIndex >= 0 {
+                previousViewController = orderedViewControllers[previousIndex]
+            }
             // User is on the first view controller and swiped left -> loop to the end
-        else if previousIndex < 0 {
-            previousViewController = orderedViewControllers.last
-        }
-        
-        return previousViewController
+            else if previousIndex < 0 {
+                previousViewController = orderedViewControllers.last
+            }
+            
+            return previousViewController
     }
     
-    func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
-        var nextViewController: UIViewController?
-        
-        guard let viewControllerIndex = orderedViewControllers.indexOf(viewController) else {
-            return nil
-        }
-        
-        let nextIndex = viewControllerIndex + 1
-        
-        if orderedViewControllers.count > nextIndex {
-            nextViewController = orderedViewControllers[nextIndex]
-        }
+    func pageViewController(pageViewController: UIPageViewController,
+        viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
+            var nextViewController: UIViewController?
+            
+            guard let viewControllerIndex = orderedViewControllers.indexOf(viewController) else {
+                return nil
+            }
+            
+            let nextIndex = viewControllerIndex + 1
+            
+            if orderedViewControllers.count > nextIndex {
+                nextViewController = orderedViewControllers[nextIndex]
+            }
             // User is on the last view controller and swiped right -> loop to the beginning
-        else if orderedViewControllers.count == nextIndex {
-            nextViewController = orderedViewControllers.first
-        }
-        
-        return nextViewController
+            else if orderedViewControllers.count == nextIndex {
+                nextViewController = orderedViewControllers.first
+            }
+            
+            return nextViewController
     }
     
     func presentationCountForPageViewController(pageViewController: UIPageViewController) -> Int {
