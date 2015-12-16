@@ -13,8 +13,8 @@ class TutorialPageViewController: UIPageViewController, UIPageViewControllerData
     private(set) lazy var orderedViewControllers : [UIViewController] = {
         // The view controllers will be showin in this order
         return [self.newColoredViewController("Green"),
-            self.newColoredViewController("Red"),
-            self.newColoredViewController("Blue")]
+                self.newColoredViewController("Red"),
+                self.newColoredViewController("Blue")]
     }()
     
     override func viewDidLoad() {
