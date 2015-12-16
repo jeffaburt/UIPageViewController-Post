@@ -81,7 +81,14 @@ class TutorialPageViewController: UIPageViewController, UIPageViewControllerData
     }
     
     func presentationIndexForPageViewController(pageViewController: UIPageViewController) -> Int {
-        return self.orderedViewControllers.indexOf(self.viewControllers!.first!)!
+        var index = 0
+        
+        if let firstViewController = self.viewControllers?.first,
+               firstViewControllerIndex = self.orderedViewControllers.indexOf(firstViewController) {
+            index = firstViewControllerIndex
+        }
+        
+        return index
     }
     
 }
