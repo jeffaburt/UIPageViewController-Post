@@ -10,7 +10,7 @@ import UIKit
 
 class TutorialPageViewController: UIPageViewController, UIPageViewControllerDataSource {
     
-    private(set) lazy var orderedViewControllers : [UIViewController] = {
+    private(set) lazy var orderedViewControllers: [UIViewController] = {
         // The view controllers will be showin in this order
         return [self.newColoredViewController("Green"),
                 self.newColoredViewController("Red"),
@@ -37,7 +37,7 @@ class TutorialPageViewController: UIPageViewController, UIPageViewControllerData
     // MARK: UIPageViewControllerDataSource
     
     func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
-        var previousViewController : UIViewController?
+        var previousViewController: UIViewController?
         
         let previousIndex = self.orderedViewControllers.indexOf(viewController)! - 1
         
@@ -53,7 +53,7 @@ class TutorialPageViewController: UIPageViewController, UIPageViewControllerData
     }
     
     func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
-        var nextViewController : UIViewController?
+        var nextViewController: UIViewController?
         
         let nextIndex = self.orderedViewControllers.indexOf(viewController)! + 1
         
