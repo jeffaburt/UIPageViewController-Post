@@ -30,7 +30,7 @@ class TutorialPageViewController: UIPageViewController, UIPageViewControllerData
         }
     }
     
-    func newColoredViewController(color: String) -> UIViewController {
+    private func newColoredViewController(color: String) -> UIViewController {
         return UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("\(color)ViewController")
     }
     
