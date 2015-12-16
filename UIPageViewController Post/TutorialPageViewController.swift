@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TutorialPageViewController: UIPageViewController, UIPageViewControllerDataSource {
+class TutorialPageViewController: UIPageViewController {
     
     private(set) lazy var orderedViewControllers: [UIViewController] = {
         // The view controllers will be showin in this order
@@ -34,7 +34,11 @@ class TutorialPageViewController: UIPageViewController, UIPageViewControllerData
         return UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("\(color)ViewController")
     }
     
-    // MARK: UIPageViewControllerDataSource
+}
+
+// MARK: UIPageViewControllerDataSource
+
+extension TutorialPageViewController: UIPageViewControllerDataSource {
     
     func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
         var previousViewController: UIViewController?
