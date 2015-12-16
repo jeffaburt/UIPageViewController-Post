@@ -39,7 +39,11 @@ class TutorialPageViewController: UIPageViewController, UIPageViewControllerData
     func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
         var previousViewController: UIViewController?
         
-        let previousIndex = self.orderedViewControllers.indexOf(viewController)! - 1
+        guard let viewControllerIndex = self.orderedViewControllers.indexOf(viewController) else {
+            return nil
+        }
+        
+        let previousIndex = viewControllerIndex - 1
         
         if self.orderedViewControllers.count > previousIndex && previousIndex >= 0 {
             previousViewController = self.orderedViewControllers[previousIndex]
@@ -55,7 +59,11 @@ class TutorialPageViewController: UIPageViewController, UIPageViewControllerData
     func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
         var nextViewController: UIViewController?
         
-        let nextIndex = self.orderedViewControllers.indexOf(viewController)! + 1
+        guard let viewControllerIndex = self.orderedViewControllers.indexOf(viewController) else {
+            return nil
+        }
+        
+        let nextIndex = viewControllerIndex + 1
         
         if self.orderedViewControllers.count > nextIndex {
             nextViewController = self.orderedViewControllers[nextIndex]
