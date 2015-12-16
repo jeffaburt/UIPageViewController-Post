@@ -43,29 +43,26 @@ extension TutorialPageViewController: UIPageViewControllerDataSource {
     
     func pageViewController(pageViewController: UIPageViewController,
         viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
-            var previousViewController: UIViewController?
-            
             guard let viewControllerIndex = orderedViewControllers.indexOf(viewController) else {
                 return nil
             }
             
             let previousIndex = viewControllerIndex - 1
             
-            if orderedViewControllers.count > previousIndex && previousIndex >= 0 {
-                previousViewController = orderedViewControllers[previousIndex]
+            if orderedViewControllers.count > previousIndex &&
+                previousIndex >= 0 {
+                    return orderedViewControllers[previousIndex]
             }
             // User is on the first view controller and swiped left -> loop to the end
             else if previousIndex < 0 {
-                previousViewController = orderedViewControllers.last
+                return orderedViewControllers.last
             }
             
-            return previousViewController
+            return nil
     }
-    
+
     func pageViewController(pageViewController: UIPageViewController,
         viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
-            var nextViewController: UIViewController?
-            
             guard let viewControllerIndex = orderedViewControllers.indexOf(viewController) else {
                 return nil
             }
@@ -73,14 +70,14 @@ extension TutorialPageViewController: UIPageViewControllerDataSource {
             let nextIndex = viewControllerIndex + 1
             
             if orderedViewControllers.count > nextIndex {
-                nextViewController = orderedViewControllers[nextIndex]
+                return orderedViewControllers[nextIndex]
             }
             // User is on the last view controller and swiped right -> loop to the beginning
             else if orderedViewControllers.count == nextIndex {
-                nextViewController = orderedViewControllers.first
+                return orderedViewControllers.first
             }
             
-            return nextViewController
+            return nil
     }
     
     func presentationCountForPageViewController(pageViewController: UIPageViewController) -> Int {
