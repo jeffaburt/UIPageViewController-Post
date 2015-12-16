@@ -22,8 +22,8 @@ class TutorialPageViewController: UIPageViewController, UIPageViewControllerData
         
         self.dataSource = self
         
-        if self.orderedViewControllers.count > 0 {
-            self.setViewControllers([self.orderedViewControllers.first!],
+        if let firstViewController = self.orderedViewControllers.first {
+            self.setViewControllers([firstViewController],
                 direction: .Forward,
                 animated: true,
                 completion: nil)
