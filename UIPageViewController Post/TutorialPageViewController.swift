@@ -20,6 +20,8 @@ class TutorialPageViewController: UIPageViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        stylePageControl()
+        
         dataSource = self
         
         if let firstViewController = orderedViewControllers.first {
@@ -28,6 +30,14 @@ class TutorialPageViewController: UIPageViewController {
                 animated: true,
                 completion: nil)
         }
+    }
+    
+    private func stylePageControl() {
+        let pageControl = UIPageControl.appearanceWhenContainedInInstancesOfClasses([self.dynamicType])
+        
+        pageControl.currentPageIndicatorTintColor = UIColor.blueColor()
+        pageControl.pageIndicatorTintColor = UIColor.greenColor()
+        pageControl.backgroundColor = UIColor.orangeColor()
     }
     
     private func newColoredViewController(color: String) -> UIViewController {
