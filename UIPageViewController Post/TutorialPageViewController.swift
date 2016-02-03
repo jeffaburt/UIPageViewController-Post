@@ -10,6 +10,8 @@ import UIKit
 
 class TutorialPageViewController: UIPageViewController {
     
+    var tutorialDelegate: TutorialPageViewControllerDelegate?
+    
     private(set) lazy var orderedViewControllers: [UIViewController] = {
         // The view controllers will be shown in this order
         return [self.newColoredViewController("Green"),
@@ -23,6 +25,7 @@ class TutorialPageViewController: UIPageViewController {
         stylePageControl()
         
         dataSource = self
+        delegate = self
         
         if let firstViewController = orderedViewControllers.first {
             setViewControllers([firstViewController],
@@ -30,6 +33,9 @@ class TutorialPageViewController: UIPageViewController {
                 animated: true,
                 completion: nil)
         }
+        
+        tutorialDelegate?.tutorialPageViewController(self,
+            didUpdatePageCount: orderedViewControllers.count)
     }
     
     private func stylePageControl() {
@@ -94,17 +100,41 @@ extension TutorialPageViewController: UIPageViewControllerDataSource {
             return orderedViewControllers[nextIndex]
     }
     
-    func presentationCountForPageViewController(pageViewController: UIPageViewController) -> Int {
-        return orderedViewControllers.count
+}
+
+extension TutorialPageViewController: UIPageViewControllerDelegate {
+    
+    func pageViewController(pageViewController: UIPageViewController,
+        didFinishAnimating finished: Bool,
+        previousViewControllers: [UIViewController],
+        transitionCompleted completed: Bool) {
+        if let firstViewController = viewControllers?.first,
+            let index = orderedViewControllers.indexOf(firstViewController) {
+                tutorialDelegate?.tutorialPageViewController(self,
+                    didUpdatePageIndex: index)
+        }
     }
     
-    func presentationIndexForPageViewController(pageViewController: UIPageViewController) -> Int {
-        guard let firstViewController = viewControllers?.first,
-            firstViewControllerIndex = orderedViewControllers.indexOf(firstViewController) else {
-                return 0
-        }
-        
-        return firstViewControllerIndex
-    }
+}
+
+protocol TutorialPageViewControllerDelegate {
+    
+    /**
+     Called when the number of pages is updated.
+     
+     - parameter tutorialPageViewController: the TutorialPageViewController instance
+     - parameter count: the total number of pages.
+     */
+    func tutorialPageViewController(tutorialPageViewController: TutorialPageViewController,
+        didUpdatePageCount count: Int)
+    
+    /**
+     Called when the current index is updated.
+     
+     - parameter tutorialPageViewController: the TutorialPageViewController instance
+     - parameter index: the index of the currently visible page.
+     */
+    func tutorialPageViewController(tutorialPageViewController: TutorialPageViewController,
+        didUpdatePageIndex index: Int)
     
 }

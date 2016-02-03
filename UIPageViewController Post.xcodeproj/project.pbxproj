@@ -14,6 +14,7 @@
 		0028BBAF1C1B0B980040AE31 /* UIPageViewController_PostTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0028BBAE1C1B0B980040AE31 /* UIPageViewController_PostTests.swift */; };
 		0028BBBA1C1B0B980040AE31 /* UIPageViewController_PostUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0028BBB91C1B0B980040AE31 /* UIPageViewController_PostUITests.swift */; };
 		0028BBC81C1B11A70040AE31 /* TutorialPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0028BBC71C1B11A70040AE31 /* TutorialPageViewController.swift */; };
+		00D7B5231C62457A0024DAE5 /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D7B5221C62457A0024DAE5 /* TutorialViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		0028BBB91C1B0B980040AE31 /* UIPageViewController_PostUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIPageViewController_PostUITests.swift; sourceTree = "<group>"; };
 		0028BBBB1C1B0B980040AE31 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0028BBC71C1B11A70040AE31 /* TutorialPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialPageViewController.swift; sourceTree = "<group>"; };
+		00D7B5221C62457A0024DAE5 /* TutorialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +104,7 @@
 				0028BBA01C1B0B980040AE31 /* Assets.xcassets */,
 				0028BBA21C1B0B980040AE31 /* LaunchScreen.storyboard */,
 				0028BBA51C1B0B980040AE31 /* Info.plist */,
+				00D7B5221C62457A0024DAE5 /* TutorialViewController.swift */,
 				0028BBC71C1B11A70040AE31 /* TutorialPageViewController.swift */,
 			);
 			path = "UIPageViewController Post";
@@ -260,6 +263,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0028BBC81C1B11A70040AE31 /* TutorialPageViewController.swift in Sources */,
+				00D7B5231C62457A0024DAE5 /* TutorialViewController.swift in Sources */,
 				0028BB961C1B0B980040AE31 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
