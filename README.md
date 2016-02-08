@@ -3,4 +3,4 @@ The source code for my blog post, [Making a tutorial using UIPageViewController 
 
 Here is a current screenshot of what the app looks like on launch:
 
-![Current Screenshot](http://oi64.tinypic.com/mhd20k.jpg)
+![Current Screenshot](http://oi65.tinypic.com/2dtdap5.jpg)

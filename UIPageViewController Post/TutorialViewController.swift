@@ -13,12 +13,21 @@ class TutorialViewController: UIViewController {
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var containerView: UIView!
     
+    var tutorialPageViewController: TutorialPageViewController? {
+        didSet {
+            tutorialPageViewController?.tutorialDelegate = self
+        }
+    }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let tutorialPageViewController = segue.destinationViewController as? TutorialPageViewController {
-            tutorialPageViewController.tutorialDelegate = self
+            self.tutorialPageViewController = tutorialPageViewController
         }
     }
 
+    @IBAction func didTapNextButton(sender: UIButton) {
+        tutorialPageViewController?.scrollToNextViewController()
+    }
 }
 
 extension TutorialViewController: TutorialPageViewControllerDelegate {

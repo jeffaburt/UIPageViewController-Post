@@ -25,20 +25,56 @@ class TutorialPageViewController: UIPageViewController {
         dataSource = self
         delegate = self
         
-        if let firstViewController = orderedViewControllers.first {
-            setViewControllers([firstViewController],
-                direction: .Forward,
-                animated: true,
-                completion: nil)
+        if let initialViewController = orderedViewControllers.first {
+            scrollToViewController(initialViewController)
         }
         
         tutorialDelegate?.tutorialPageViewController(self,
             didUpdatePageCount: orderedViewControllers.count)
     }
     
+    /**
+     Scrolls to the next view controller.
+     */
+    func scrollToNextViewController() {
+        if let visibleViewController = viewControllers?.first,
+            let nextViewController = pageViewController(self,
+                viewControllerAfterViewController: visibleViewController) {
+                    scrollToViewController(nextViewController)
+        }
+    }
+    
     private func newColoredViewController(color: String) -> UIViewController {
         return UIStoryboard(name: "Main", bundle: nil) .
             instantiateViewControllerWithIdentifier("\(color)ViewController")
+    }
+    
+    /**
+     Scrolls to the given 'viewController' page.
+     
+     - parameter viewController: the view controller to show.
+     */
+    private func scrollToViewController(viewController: UIViewController) {
+        setViewControllers([viewController],
+            direction: .Forward,
+            animated: true,
+            completion: { (finished) -> Void in
+                // Setting the view controller programmatically does not fire
+                // any delegate methods, so we have to manually notify the
+                // 'tutorialDelegate' of the new index.
+                self.notifyTutorialDelegateOfNewIndex()
+        })
+    }
+    
+    /**
+     Notifies '_tutorialDelegate' that the current page index was updated.
+     */
+    private func notifyTutorialDelegateOfNewIndex() {
+        if let firstViewController = viewControllers?.first,
+            let index = orderedViewControllers.indexOf(firstViewController) {
+                tutorialDelegate?.tutorialPageViewController(self,
+                    didUpdatePageIndex: index)
+        }
     }
     
 }
@@ -98,11 +134,7 @@ extension TutorialPageViewController: UIPageViewControllerDelegate {
         didFinishAnimating finished: Bool,
         previousViewControllers: [UIViewController],
         transitionCompleted completed: Bool) {
-        if let firstViewController = viewControllers?.first,
-            let index = orderedViewControllers.indexOf(firstViewController) {
-                tutorialDelegate?.tutorialPageViewController(self,
-                    didUpdatePageIndex: index)
-        }
+        notifyTutorialDelegateOfNewIndex()
     }
     
 }
