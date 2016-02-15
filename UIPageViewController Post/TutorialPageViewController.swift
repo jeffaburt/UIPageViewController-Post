@@ -10,7 +10,7 @@ import UIKit
 
 class TutorialPageViewController: UIPageViewController {
     
-    var tutorialDelegate: TutorialPageViewControllerDelegate?
+    weak var tutorialDelegate: TutorialPageViewControllerDelegate?
     
     private(set) lazy var orderedViewControllers: [UIViewController] = {
         // The view controllers will be shown in this order
@@ -139,7 +139,7 @@ extension TutorialPageViewController: UIPageViewControllerDelegate {
     
 }
 
-protocol TutorialPageViewControllerDelegate {
+protocol TutorialPageViewControllerDelegate: class {
     
     /**
      Called when the number of pages is updated.
