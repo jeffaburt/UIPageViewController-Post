@@ -44,6 +44,21 @@ class TutorialPageViewController: UIPageViewController {
         }
     }
     
+    /**
+     Scrolls to the view controller at the given index. Automatically calculates
+     the direction.
+     
+     - parameter newIndex: the new index to scroll to
+     */
+    func scrollToViewController(index newIndex: Int) {
+        if let firstViewController = viewControllers?.first as? ColoredViewController,
+            let currentIndex = orderedViewControllers.indexOf(firstViewController) {
+                let direction: UIPageViewControllerNavigationDirection = newIndex >= currentIndex ? .Forward : .Reverse
+                let nextViewController = orderedViewControllers[newIndex]
+                scrollToViewController(nextViewController, direction: direction)
+        }
+    }
+    
     private func newColoredViewController(color: String) -> ColoredViewController {
         return UIStoryboard(name: "Main", bundle: nil) .
             instantiateViewControllerWithIdentifier("\(color)ViewController") as! ColoredViewController
@@ -54,9 +69,10 @@ class TutorialPageViewController: UIPageViewController {
      
      - parameter viewController: the view controller to show.
      */
-    private func scrollToViewController(viewController: UIViewController) {
+    private func scrollToViewController(viewController: UIViewController,
+        direction: UIPageViewControllerNavigationDirection = .Forward) {
         setViewControllers([viewController],
-            direction: .Forward,
+            direction: direction,
             animated: true,
             completion: { (finished) -> Void in
                 // Setting the view controller programmatically does not fire

@@ -25,6 +25,8 @@ class TutorialViewController: UIViewController {
         if let greenColoredViewController = tutorialPageViewController?.orderedViewControllers.first {
             greenColoredViewController.label.text = "Hello world!"
         }
+
+        pageControl.addTarget(self, action: "didChangePageControlValue", forControlEvents: .ValueChanged)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -35,6 +37,13 @@ class TutorialViewController: UIViewController {
 
     @IBAction func didTapNextButton(sender: UIButton) {
         tutorialPageViewController?.scrollToNextViewController()
+    }
+    
+    /**
+     Fired when the user taps on the pageControl to change its current page.
+     */
+    func didChangePageControlValue() {
+        tutorialPageViewController?.scrollToViewController(index: pageControl.currentPage)
     }
 }
 
