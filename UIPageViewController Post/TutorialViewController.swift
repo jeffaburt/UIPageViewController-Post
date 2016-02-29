@@ -19,6 +19,12 @@ class TutorialViewController: UIViewController {
         }
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        pageControl.addTarget(self, action: "didChangePageControlValue", forControlEvents: .ValueChanged)
+    }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let tutorialPageViewController = segue.destinationViewController as? TutorialPageViewController {
             self.tutorialPageViewController = tutorialPageViewController
@@ -27,6 +33,13 @@ class TutorialViewController: UIViewController {
 
     @IBAction func didTapNextButton(sender: UIButton) {
         tutorialPageViewController?.scrollToNextViewController()
+    }
+    
+    /**
+     Fired when the user taps on the pageControl to change its current page.
+     */
+    func didChangePageControlValue() {
+        tutorialPageViewController?.scrollToViewController(index: pageControl.currentPage)
     }
 }
 
