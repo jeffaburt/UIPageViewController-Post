@@ -19,6 +19,14 @@ class TutorialViewController: UIViewController {
         }
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        if let greenColoredViewController = tutorialPageViewController?.orderedViewControllers.first {
+            greenColoredViewController.label.text = "Hello world!"
+        }
+    }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let tutorialPageViewController = segue.destinationViewController as? TutorialPageViewController {
             self.tutorialPageViewController = tutorialPageViewController

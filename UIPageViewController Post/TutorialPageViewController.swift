@@ -12,7 +12,7 @@ class TutorialPageViewController: UIPageViewController {
     
     weak var tutorialDelegate: TutorialPageViewControllerDelegate?
     
-    private(set) lazy var orderedViewControllers: [UIViewController] = {
+    private(set) lazy var orderedViewControllers: [ColoredViewController] = {
         // The view controllers will be shown in this order
         return [self.newColoredViewController("Green"),
             self.newColoredViewController("Red"),
@@ -44,9 +44,9 @@ class TutorialPageViewController: UIPageViewController {
         }
     }
     
-    private func newColoredViewController(color: String) -> UIViewController {
+    private func newColoredViewController(color: String) -> ColoredViewController {
         return UIStoryboard(name: "Main", bundle: nil) .
-            instantiateViewControllerWithIdentifier("\(color)ViewController")
+            instantiateViewControllerWithIdentifier("\(color)ViewController") as! ColoredViewController
     }
     
     /**
@@ -70,7 +70,7 @@ class TutorialPageViewController: UIPageViewController {
      Notifies '_tutorialDelegate' that the current page index was updated.
      */
     private func notifyTutorialDelegateOfNewIndex() {
-        if let firstViewController = viewControllers?.first,
+        if let firstViewController = viewControllers?.first as? ColoredViewController,
             let index = orderedViewControllers.indexOf(firstViewController) {
                 tutorialDelegate?.tutorialPageViewController(self,
                     didUpdatePageIndex: index)
@@ -85,7 +85,8 @@ extension TutorialPageViewController: UIPageViewControllerDataSource {
     
     func pageViewController(pageViewController: UIPageViewController,
         viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
-            guard let viewControllerIndex = orderedViewControllers.indexOf(viewController) else {
+            guard let coloredViewController = viewController as? ColoredViewController,
+                let viewControllerIndex = orderedViewControllers.indexOf(coloredViewController) else {
                 return nil
             }
             
@@ -106,7 +107,8 @@ extension TutorialPageViewController: UIPageViewControllerDataSource {
 
     func pageViewController(pageViewController: UIPageViewController,
         viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
-            guard let viewControllerIndex = orderedViewControllers.indexOf(viewController) else {
+            guard let coloredViewController = viewController as? ColoredViewController,
+                let viewControllerIndex = orderedViewControllers.indexOf(coloredViewController) else {
                 return nil
             }
             
