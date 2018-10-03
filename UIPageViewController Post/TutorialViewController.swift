@@ -21,17 +21,16 @@ class TutorialViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        pageControl.addTarget(self, action: "didChangePageControlValue", forControlEvents: .ValueChanged)
+        pageControl.addTarget(self, action: Selector("didChangePageControlValue"), for: .valueChanged)
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if let tutorialPageViewController = segue.destinationViewController as? TutorialPageViewController {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let tutorialPageViewController = segue.destination as? TutorialPageViewController {
             self.tutorialPageViewController = tutorialPageViewController
         }
     }
 
-    @IBAction func didTapNextButton(sender: UIButton) {
+    @IBAction func didTapNextButton(_ sender: Any) {
         tutorialPageViewController?.scrollToNextViewController()
     }
     

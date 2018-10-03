@@ -26,11 +26,10 @@ class TutorialPageViewController: UIPageViewController {
         delegate = self
         
         if let initialViewController = orderedViewControllers.first {
-            scrollToViewController(initialViewController)
+            scrollToViewController(viewController: initialViewController)
         }
         
-        tutorialDelegate?.tutorialPageViewController(self,
-            didUpdatePageCount: orderedViewControllers.count)
+        tutorialDelegate?.tutorialPageViewController(tutorialPageViewController: self, didUpdatePageCount: orderedViewControllers.count)
     }
     
     /**
@@ -38,9 +37,8 @@ class TutorialPageViewController: UIPageViewController {
      */
     func scrollToNextViewController() {
         if let visibleViewController = viewControllers?.first,
-            let nextViewController = pageViewController(self,
-                viewControllerAfterViewController: visibleViewController) {
-                    scrollToViewController(nextViewController)
+            let nextViewController = pageViewController(self, viewControllerAfter: visibleViewController) {
+                    scrollToViewController(viewController: nextViewController)
         }
     }
     
@@ -52,16 +50,16 @@ class TutorialPageViewController: UIPageViewController {
      */
     func scrollToViewController(index newIndex: Int) {
         if let firstViewController = viewControllers?.first,
-            let currentIndex = orderedViewControllers.indexOf(firstViewController) {
-                let direction: UIPageViewControllerNavigationDirection = newIndex >= currentIndex ? .Forward : .Reverse
+            let currentIndex = orderedViewControllers.firstIndex(of: firstViewController) {
+            let direction: UIPageViewController.NavigationDirection = newIndex >= currentIndex ? .forward : .reverse
                 let nextViewController = orderedViewControllers[newIndex]
-                scrollToViewController(nextViewController, direction: direction)
+                scrollToViewController(viewController: nextViewController, direction: direction)
         }
     }
     
-    private func newColoredViewController(color: String) -> UIViewController {
+    func newColoredViewController(_ color: String) -> UIViewController {
         return UIStoryboard(name: "Main", bundle: nil) .
-            instantiateViewControllerWithIdentifier("\(color)ViewController")
+            instantiateViewController(withIdentifier: "\(color)ViewController")
     }
     
     /**
@@ -70,7 +68,7 @@ class TutorialPageViewController: UIPageViewController {
      - parameter viewController: the view controller to show.
      */
     private func scrollToViewController(viewController: UIViewController,
-        direction: UIPageViewControllerNavigationDirection = .Forward) {
+                                        direction: UIPageViewController.NavigationDirection = .forward) {
         setViewControllers([viewController],
             direction: direction,
             animated: true,
@@ -87,9 +85,8 @@ class TutorialPageViewController: UIPageViewController {
      */
     private func notifyTutorialDelegateOfNewIndex() {
         if let firstViewController = viewControllers?.first,
-            let index = orderedViewControllers.indexOf(firstViewController) {
-                tutorialDelegate?.tutorialPageViewController(self,
-                    didUpdatePageIndex: index)
+            let index = orderedViewControllers.firstIndex(of: firstViewController) {
+                tutorialDelegate?.tutorialPageViewController(tutorialPageViewController: self, didUpdatePageIndex: index)
         }
     }
     
@@ -99,9 +96,9 @@ class TutorialPageViewController: UIPageViewController {
 
 extension TutorialPageViewController: UIPageViewControllerDataSource {
     
-    func pageViewController(pageViewController: UIPageViewController,
-        viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
-            guard let viewControllerIndex = orderedViewControllers.indexOf(viewController) else {
+    func pageViewController(_ pageViewController: UIPageViewController,
+                            viewControllerBefore viewController: UIViewController) -> UIViewController? {
+            guard let viewControllerIndex = orderedViewControllers.firstIndex(of: viewController) else {
                 return nil
             }
             
@@ -120,9 +117,9 @@ extension TutorialPageViewController: UIPageViewControllerDataSource {
             return orderedViewControllers[previousIndex]
     }
 
-    func pageViewController(pageViewController: UIPageViewController,
-        viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
-            guard let viewControllerIndex = orderedViewControllers.indexOf(viewController) else {
+    func pageViewController(_ pageViewController: UIPageViewController,
+                            viewControllerAfter viewController: UIViewController) -> UIViewController? {
+            guard let viewControllerIndex = orderedViewControllers.firstIndex(of: viewController) else {
                 return nil
             }
             
